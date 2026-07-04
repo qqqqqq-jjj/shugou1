@@ -27,10 +27,16 @@ void search(const char *path, const char *kw) {
 }
 
 int main() {
-    char kw[100];
-    printf("关键词："); scanf("%s", kw);
-    printf("\n===== 搜索结果 =====\n");
-    search(".", kw);
+     char path[256], kw[100];
+    printf("搜索目录（默认当前目录 .）：");
+    fgets(path, sizeof(path), stdin);
+    path[strcspn(path, "\n")] = 0;
+    if (strlen(path) == 0) strcpy(path, ".");
+    printf("关键词：");
+    scanf("%s", kw);
+    printf("\n开始搜索...\n\n");
+    search(path, kw);
     printf("\n共找到 %d 个结果\n", count);
     return 0;
+
 }
