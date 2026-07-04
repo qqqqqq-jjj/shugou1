@@ -18,9 +18,9 @@ void search(const char *path, const char *kw) {
         if (S_ISDIR(st.st_mode)) {
             search(fullpath, kw);
         } else if (strstr(entry->d_name, kw)) {
-            printf("ÎÄ¼ş£º%s\n´óĞ¡£º%ld B\nÊ±¼ä£º%s\n",
-                   fullpath, st.st_size, ctime(&st.st_mtime));
-            printf("------------------------\n");
+            count++;
+            printf("[%d] %s\nå¤§å°ï¼š%ld B | ä¿®æ”¹ï¼š%s",
+                   count, fullpath, st.st_size, ctime(&st.st_mtime));
         }
     }
     closedir(dir);
@@ -28,8 +28,9 @@ void search(const char *path, const char *kw) {
 
 int main() {
     char kw[100];
-    printf("¹Ø¼ü´Ê£º"); scanf("%s", kw);
-    printf("\n===== ËÑË÷½á¹û =====\n");
+    printf("å…³é”®è¯ï¼š"); scanf("%s", kw);
+    printf("\n===== æœç´¢ç»“æœ =====\n");
     search(".", kw);
+    printf("\nå…±æ‰¾åˆ° %d ä¸ªç»“æœ\n", count);
     return 0;
 }
