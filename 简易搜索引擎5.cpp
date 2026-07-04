@@ -28,6 +28,7 @@ void search(const char *path, const char *kw) {
 
 int main() {
      char path[256], kw[100];
+    printf("===== 本地文件搜索引擎 V6 =====\n");
     printf("搜索目录（默认当前目录 .）：");
     fgets(path, sizeof(path), stdin);
     path[strcspn(path, "\n")] = 0;
